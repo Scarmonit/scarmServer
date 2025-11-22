@@ -178,6 +178,9 @@ curl http://localhost:3000/health
 1. ℹ️ **GitHub CLI output suppression** - Worked around using web UI
 2. ℹ️ **16 console warnings** - Expected (logger utility uses console intentionally)
 3. ⚠️ **Trivy image scan disabled** - TODO: Reintroduce with verified action or manual method
+4. ⚠️ **CI failures on doc commits** - Documentation files not formatted; fixed with `prettier --write`
+
+**Note**: Multiple CI workflow runs failed after commit `13dbd3e` due to documentation files (DEPLOY_COMPLETE.md, DEPLOY_DEBUG_STATUS.md, DEPLOYMENT_FINAL_STATUS.md, FINAL_TESTING_REPORT.md, SESSION_COMPLETE.md) not being formatted with Prettier. This was resolved by running `npx prettier --write` on all documentation files.
 
 ---
 
