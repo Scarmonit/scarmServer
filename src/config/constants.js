@@ -22,6 +22,12 @@ export const CONFIG = {
   // Performance
   CACHE_TTL: parseInt(process.env.CACHE_TTL, 10) || 300000,
   POOL_SIZE: parseInt(process.env.POOL_SIZE, 10) || 10,
+
+  // Local LLM / Ollama Configuration
+  OLLAMA_HOST: process.env.OLLAMA_HOST || 'http://localhost:11434',
+  OLLAMA_MODEL: process.env.OLLAMA_MODEL || 'llama2',
+  MODEL_MAX_TOKENS: parseInt(process.env.MODEL_MAX_TOKENS, 10) || 512,
+  MODEL_TEMPERATURE: parseFloat(process.env.MODEL_TEMPERATURE) || 0.7,
 };
 
 export const HTTP_STATUS = {

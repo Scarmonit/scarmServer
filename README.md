@@ -244,3 +244,41 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for:
 - Health checks & monitoring
 - Troubleshooting
 - Kubernetes examples
+
+## Local LLM Integration (No External API Limits)
+
+This project now supports running completions against a local LLM server (e.g., [Ollama](https://ollama.ai)).
+
+### Configuration Environment Variables
+```
+OLLAMA_HOST=http://localhost:11434
+OLLAMA_MODEL=llama2
+MODEL_MAX_TOKENS=512
+MODEL_TEMPERATURE=0.7
+```
+
+### Usage Example
+```javascript
+import { LocalLLMClient } from './src/clients/local-llm-client.js';
+const client = new LocalLLMClient();
+const output = await client.complete('Explain event loops in Node.js in one paragraph.');
+console.log(output);
+
+for await (const chunk of client.stream('Write a haiku about code.')) {
+  process.stdout.write(chunk);
+}
+```
+
+### Benefits
+- No external rate limits
+- Data stays local
+- Lower latency for iterative development
+- Can stream tokens for realtime interaction
+
+### Starting Ollama (Example)
+```bash
+ollama pull llama2
+ollama serve
+```
+
+Make sure the host and model match your local setup.

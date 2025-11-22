@@ -26,13 +26,11 @@ export class LLMClient {
    */
   async complete(prompt, options = {}) {
     try {
-      // TODO: Implement API call
       info('Sending completion request', {
         promptLength: prompt.length,
         ...options,
       });
-
-      throw new Error('Not implemented');
+      throw new Error('Not implemented - use a concrete client (e.g., LocalLLMClient)');
     } catch (err) {
       error('Completion request failed', err);
       throw err;
@@ -54,7 +52,7 @@ export class LLMClient {
       });
 
       // Placeholder yield to satisfy generator function requirements
-      yield 'Streaming not yet implemented';
+      yield 'Streaming not yet implemented - use a concrete client (e.g., LocalLLMClient)';
 
       throw new Error('Not implemented');
     } catch (err) {
