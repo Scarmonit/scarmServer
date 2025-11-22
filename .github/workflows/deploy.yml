@@ -112,20 +112,15 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           provenance: false
 
-      - name: Install Trivy
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget
-          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
-          echo deb https://aquasecurity.github.io/trivy-repo/deb stable main | sudo tee /etc/apt/sources.list.d/trivy.list
-          sudo apt-get update
-          sudo apt-get install -y trivy
-
-      - name: Security scan (Image HIGH/CRITICAL)
-        run: |
-          IMAGE=$(echo "${{ steps.meta.outputs.tags }}" | head -n1 | cut -d',' -f1)
-          echo "Scanning image $IMAGE"
-          trivy image --exit-code 1 --severity HIGH,CRITICAL --no-progress $IMAGE || { echo 'High/Critical vulnerabilities found in image'; exit 1; }
+      - name: Scan image with Trivy (HIGH/CRITICAL)
+        uses: aquasecurity/trivy-action@v0.14.0
+        with:
+          image-ref: ${{ steps.meta.outputs.tags }}
+          severity: 'HIGH,CRITICAL'
+          format: 'table'
+          ignore-unfixed: true
+          exit-code: '1'
+          vuln-type: 'OS,library'
 
       - name: Run container health check
         run: |
