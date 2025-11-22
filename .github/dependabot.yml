@@ -1,0 +1,13 @@
+﻿version: 2
+      - "scarmonit"
+    assignees:
+      - "dependencies"
+    labels:
+    rebase-strategy: "auto"
+    open-pull-requests-limit: 5
+      interval: "weekly"
+    schedule:
+    directory: "/"
+  - package-ecosystem: "npm"
+updates:
+

@@ -1,0 +1,34 @@
+﻿# Auto-labeling configuration for PRs based on changed files
+
+'documentation':
+  - '**/*.md'
+  - 'docs/**/*'
+
+'dependencies':
+  - 'package.json'
+  - 'package-lock.json'
+
+'tests':
+  - 'tests/**/*'
+  - '**/*.test.js'
+
+'ci/cd':
+  - '.github/**/*'
+
+'code-style':
+  - '.eslintrc*'
+  - '.prettierrc*'
+  - '.editorconfig'
+  - 'eslint.config.js'
+  - '.idea/codeStyles/**/*'
+
+'feature':
+  - 'src/**/*'
+
+'scripts':
+  - 'scripts/**/*'
+
+'config':
+  - 'src/config/**/*'
+  - '.env.example'
+

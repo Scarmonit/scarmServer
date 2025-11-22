@@ -1,0 +1,57 @@
+{
+  "name": "scarm-server",
+  "version": "1.0.0",
+  "description": "scarmServer - LLM Framework Server",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:dev": "node --watch src/index.js",
+    "start:bridge": "node src/agents/bridge.js",
+    "system:start": "node scripts/start-all.js",
+    "test": "node --test tests/**/*.test.js",
+    "coverage:raw": "c8 node --test tests/**/*.test.js",
+    "coverage:report": "c8 report --reporter=lcov --reporter=text-summary --reporter=json-summary",
+    "coverage:threshold": "node ./scripts/coverage-threshold-check.js",
+    "test:coverage": "npm run coverage:raw && npm run coverage:report && npm run coverage:threshold",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "commitlint": "commitlint --edit"
+  },
+  "keywords": [
+    "llm",
+    "framework",
+    "a2a",
+    "agent"
+  ],
+  "author": "Parker Dunn <Scarmonit@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^18.6.1",
+    "@commitlint/config-conventional": "^18.6.3",
+    "@eslint/js": "^9.39.1",
+    "c8": "^9.1.0",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
+}
