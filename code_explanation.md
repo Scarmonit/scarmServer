@@ -130,3 +130,15 @@ The `.idea/codeStyles/` directory is intentionally kept to distribute authoritat
 The current configuration implements LLM Framework standards through a layered approach (JetBrains scheme + EditorConfig + ESLint + Prettier). This eliminates style drift, reduces review noise, and guarantees deterministic formatting locally and in CI.
 
 **Last Updated:** 2025-11-22
+
+## Historical Note
+Previously, the project used:
+```xml
+<option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
+```
+This has been replaced with:
+```xml
+<option name="USE_PER_PROJECT_SETTINGS" value="true" />
+<option name="PREFERRED_PROJECT_CODE_STYLE" value="Project" />
+```
+Activating the custom `Project` scheme defined in `Project.xml` for consistent enforcement.
