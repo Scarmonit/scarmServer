@@ -44,12 +44,11 @@ jobs:
       # Manual Trivy installation & filesystem scan
       - name: Install Trivy
         run: |
+          sudo apt-get install wget apt-transport-https gnupg -y
+          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
+          echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" | sudo tee /etc/apt/sources.list.d/trivy.list
           sudo apt-get update
-          sudo apt-get install -y wget
-          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
-          echo deb https://aquasecurity.github.io/trivy-repo/deb stable main | sudo tee /etc/apt/sources.list.d/trivy.list
-          sudo apt-get update
-          sudo apt-get install -y trivy
+          sudo apt-get install trivy -y
 
       - name: Security scan (FS HIGH/CRITICAL)
         run: trivy fs --exit-code 1 --severity HIGH,CRITICAL --no-progress . || { echo 'High/Critical vulnerabilities found in filesystem'; exit 1; }
