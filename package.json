@@ -18,7 +18,9 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "commitlint": "commitlint --edit"
+    "commitlint": "commitlint --edit",
+    "llm:generate": "node scripts/cli-llm.js generate",
+    "llm:stream": "node scripts/cli-llm.js stream"
   },
   "keywords": [
     "llm",

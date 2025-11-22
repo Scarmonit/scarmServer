@@ -321,3 +321,19 @@ Errors:
 ```json
 { "id": "req-1", "error": "message" }
 ```
+
+### CLI Client
+Run the bridge (`npm run start:bridge`) then:
+
+```bash
+npm run llm:generate "Explain local models" -- --model llama2
+npm run llm:stream "Write a short poem about servers" -- --model llama2
+```
+
+You can omit `--model` to use the default.
+
+### Multi-Model Routing
+Include a `model` field in WebSocket messages:
+```json
+{ "id": "m1", "type": "llm.generate", "prompt": "Hello", "model": "other-model" }
+```

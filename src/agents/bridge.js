@@ -6,46 +6,45 @@
 import { CONFIG } from '../config/constants.js';
 import { info, error } from '../utils/logger.js';
 import { WebSocketServer } from 'ws';
-import { LLMService } from '../services/llm-service.js';
+import { LLMRouter } from '../services/llm-router.js';
 
-const service = new LLMService();
+let wss; // keep reference for teardown
+const router = new LLMRouter();
 
 /**
  * Initialize the A2A Bridge
  */
-const initBridge = async () => {
+export const startBridge = async () => {
   try {
-    info('Starting A2A Bridge Agent...', {
-      port: CONFIG.PORT + 1,
-    });
-
+    info('Starting A2A Bridge Agent...', { port: CONFIG.PORT + 1 });
     const PROTOCOL = {
       // request: { id, type: 'llm.generate', prompt, options }
       async handle(socket, msg) {
-        const { id, type, prompt, options } = msg;
+        const { id, type, prompt, options, model } = msg;
         if (!type || !id) {
           socket.send(JSON.stringify({ id: id || null, error: 'invalid_message' }));
           return;
         }
+        const mockMode = CONFIG.BRIDGE_MOCK === 'true';
+        const service = router.getService(model);
         try {
-          const mockMode = CONFIG.BRIDGE_MOCK === 'true';
           switch (type) {
             case 'llm.generate': {
-              const out = mockMode ? `MOCK:${prompt}` : await service.generate(prompt, options || {});
-              socket.send(JSON.stringify({ id, data: out }));
+              const out = mockMode ? `MOCK:${model || service.client.model}:${prompt}` : await service.generate(prompt, options || {});
+              socket.send(JSON.stringify({ id, data: out, model: model || service.client.model }));
               break;
             }
             case 'llm.stream': {
               if (mockMode) {
-                const tokens = ['MO', 'CK', ':', prompt.slice(0, 5)];
-                for (const t of tokens) socket.send(JSON.stringify({ id, chunk: t }));
-                socket.send(JSON.stringify({ id, done: true }));
+                const tokens = ['MO', 'CK', ':', (model || service.client.model), ':', prompt.slice(0, 5)];
+                for (const t of tokens) socket.send(JSON.stringify({ id, chunk: t, model: model || service.client.model }));
+                socket.send(JSON.stringify({ id, done: true, model: model || service.client.model }));
               } else {
                 const stream = await service.generate(prompt, { ...(options || {}), stream: true });
                 for await (const token of stream) {
-                  socket.send(JSON.stringify({ id, chunk: token }));
+                  socket.send(JSON.stringify({ id, chunk: token, model: model || service.client.model }));
                 }
-                socket.send(JSON.stringify({ id, done: true }));
+                socket.send(JSON.stringify({ id, done: true, model: model || service.client.model }));
               }
               break;
             }
@@ -59,17 +58,12 @@ const initBridge = async () => {
     };
 
     const port = CONFIG.PORT + 1;
-    const wss = new WebSocketServer({ port });
+    wss = new WebSocketServer({ port });
     wss.on('connection', (ws) => {
       info('Bridge client connected');
       ws.on('message', async (raw) => {
         let msg;
-        try {
-          msg = JSON.parse(raw.toString());
-        } catch (e) {
-          ws.send(JSON.stringify({ id: null, error: 'invalid_json' }));
-          return;
-        }
+        try { msg = JSON.parse(raw.toString()); } catch { ws.send(JSON.stringify({ id: null, error: 'invalid_json' })); return; }
         PROTOCOL.handle(ws, msg);
       });
       ws.on('close', () => info('Bridge client disconnected'));
@@ -79,9 +73,19 @@ const initBridge = async () => {
     info('A2A Bridge Agent started successfully', { port });
   } catch (err) {
     error('Failed to start A2A Bridge Agent', err);
-    process.exit(1);
+    throw err;
   }
 };
 
-// Start the bridge
-initBridge();
+export const stopBridge = async () => {
+  if (wss) {
+    await new Promise((resolve) => wss.close(() => resolve()));
+    info('A2A Bridge Agent stopped');
+    wss = null;
+  }
+};
+
+// Auto-start if executed directly (not imported by tests)
+if (process.argv[1] && process.argv[1].endsWith('bridge.js')) {
+  startBridge();
+}
