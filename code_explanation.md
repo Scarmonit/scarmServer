@@ -132,13 +132,18 @@ The current configuration implements LLM Framework standards through a layered a
 **Last Updated:** 2025-11-22
 
 ## Historical Note
-Previously, the project used:
+
+Replaced legacy Default scheme activation:
+
 ```xml
 <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
 ```
-This has been replaced with:
+
+with per-project settings:
+
 ```xml
 <option name="USE_PER_PROJECT_SETTINGS" value="true" />
 <option name="PREFERRED_PROJECT_CODE_STYLE" value="Project" />
 ```
+
 Activating the custom `Project` scheme defined in `Project.xml` for consistent enforcement.

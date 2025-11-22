@@ -4,20 +4,21 @@ This export consolidates all style-related configuration for use in other editor
 
 ## Summary
 
-| Concern        | Value / Rule                                      | Source File(s)                     |
-| -------------- | -------------------------------------------------- | ---------------------------------- |
-| Indentation    | 2 spaces                                           | .editorconfig, Project.xml, ESLint |
-| Line length    | 100 characters                                     | .editorconfig, ESLint, Prettier    |
-| Quotes         | Single (template literals allowed)                 | ESLint, Prettier, Project.xml      |
-| Semicolons     | Required                                           | ESLint, Project.xml, Prettier      |
-| Trailing comma | always-multiline / all                             | ESLint (always-multiline), Prettier|
-| Imports/object | Spaces inside braces                               | ESLint object-curly-spacing, Project.xml |
-| Module system  | ES Modules only                                    | README.md, ESLint (sourceType)     |
-| Line endings   | LF                                                 | .editorconfig, Prettier            |
-| Logger usage   | Use logger utility (no console.log)                | README.md                          |
-| Max width wrap | Wrap beyond 100 columns                            | Project.xml, Prettier              |
+| Concern        | Value / Rule                        | Source File(s)                           |
+| -------------- | ----------------------------------- | ---------------------------------------- |
+| Indentation    | 2 spaces                            | .editorconfig, Project.xml, ESLint       |
+| Line length    | 100 characters                      | .editorconfig, ESLint, Prettier          |
+| Quotes         | Single (template literals allowed)  | ESLint, Prettier, Project.xml            |
+| Semicolons     | Required                            | ESLint, Project.xml, Prettier            |
+| Trailing comma | always-multiline / all              | ESLint (always-multiline), Prettier      |
+| Imports/object | Spaces inside braces                | ESLint object-curly-spacing, Project.xml |
+| Module system  | ES Modules only                     | README.md, ESLint (sourceType)           |
+| Line endings   | LF                                  | .editorconfig, Prettier                  |
+| Logger usage   | Use logger utility (no console.log) | README.md                                |
+| Max width wrap | Wrap beyond 100 columns             | Project.xml, Prettier                    |
 
 ## VS Code Settings
+
 Add or merge `.vscode/settings.json`:
 
 ```jsonc
@@ -33,7 +34,7 @@ Add or merge `.vscode/settings.json`:
   "files.insertFinalNewline": true,
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "eslint.options": {
-    "ignorePath": ".eslintignore"
+    "ignorePath": ".eslintignore",
   },
   "prettier.singleQuote": true,
   "prettier.semi": true,
@@ -44,8 +45,8 @@ Add or merge `.vscode/settings.json`:
   "prettier.bracketSameLine": false,
   "prettier.arrowParens": "always",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  }
+    "source.fixAll.eslint": "explicit",
+  },
 }
 ```
 
@@ -89,6 +90,7 @@ This can be consumed by tooling or scripts:
 ```
 
 ## Shell Export (Environment Variables)
+
 Optional environment variable definitions:
 
 ```bash
@@ -132,8 +134,9 @@ npx prettier --check $FILES
 - Introduce markdown linting (`markdownlint-cli`).
 
 ## License
+
 This configuration is part of the project and inherits the repository's license.
 
 ---
-Generated on: 2025-11-22
 
+Generated on: 2025-11-22
