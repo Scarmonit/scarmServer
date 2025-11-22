@@ -1,4 +1,4 @@
-﻿name: CI
+﻿﻿name: CI
 
 on:
   push:
@@ -59,10 +59,11 @@ jobs:
 
       - name: Codecov Upload (Node 22 only)
         if: ${{ matrix.node == '22.x' }}
+        continue-on-error: true
         uses: codecov/codecov-action@v4
         with:
           files: coverage/lcov.info
-          fail_ci_if_error: true
+          fail_ci_if_error: false
           verbose: true
 
       - name: Upload coverage artifact (Node 22 only)
