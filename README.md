@@ -301,3 +301,23 @@ for await (const token of await service.generate('Stream a short poem.', { strea
   process.stdout.write(token);
 }
 ```
+
+## A2A Bridge Agent Protocol (WebSocket)
+
+Connect to: `ws://localhost:<PORT+1>` (default 3001 if PORT=3000)
+
+Request message format:
+```json
+{ "id": "req-1", "type": "llm.generate", "prompt": "Hello" }
+```
+Streaming request:
+```json
+{ "id": "stream-1", "type": "llm.stream", "prompt": "Write a short poem" }
+```
+Responses:
+- Generate: `{ "id": "req-1", "data": "<full output string>" }`
+- Stream chunks: `{ "id": "stream-1", "chunk": "token" }` ... final `{ "id": "stream-1", "done": true }`
+Errors:
+```json
+{ "id": "req-1", "error": "message" }
+```
