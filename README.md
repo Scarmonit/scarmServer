@@ -250,6 +250,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for:
 This project now supports running completions against a local LLM server (e.g., [Ollama](https://ollama.ai)).
 
 ### Configuration Environment Variables
+
 ```
 OLLAMA_HOST=http://localhost:11434
 OLLAMA_MODEL=llama2
@@ -258,6 +259,7 @@ MODEL_TEMPERATURE=0.7
 ```
 
 ### Usage Example
+
 ```javascript
 import { LocalLLMClient } from './src/clients/local-llm-client.js';
 const client = new LocalLLMClient();
@@ -270,15 +272,32 @@ for await (const chunk of client.stream('Write a haiku about code.')) {
 ```
 
 ### Benefits
+
 - No external rate limits
 - Data stays local
 - Lower latency for iterative development
 - Can stream tokens for realtime interaction
 
 ### Starting Ollama (Example)
+
 ```bash
 ollama pull llama2
 ollama serve
 ```
 
 Make sure the host and model match your local setup.
+
+### High-Level Service Wrapper
+
+A higher-level `LLMService` is available for caching, validation, and unified streaming interface.
+
+```javascript
+import { LLMService } from './src/services/llm-service.js';
+const service = new LLMService();
+const text = await service.generate('Summarize the benefits of local LLMs.');
+console.log(text);
+
+for await (const token of await service.generate('Stream a short poem.', { stream: true })) {
+  process.stdout.write(token);
+}
+```
