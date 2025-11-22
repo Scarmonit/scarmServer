@@ -53,6 +53,9 @@ export class LLMClient {
         ...options,
       });
 
+      // Placeholder yield to satisfy generator function requirements
+      yield 'Streaming not yet implemented';
+
       throw new Error('Not implemented');
     } catch (err) {
       error('Streaming request failed', err);

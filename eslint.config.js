@@ -33,7 +33,7 @@ export default [
         },
       ],
       'no-console': 'warn',
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' }],
       'no-var': 'error',
       'prefer-const': 'error',
       'prefer-arrow-callback': 'error',

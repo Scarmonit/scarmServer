@@ -60,8 +60,8 @@ process.on('SIGINT', shutdown);
 // Start all components
 info('Starting scarmServer system...');
 
-// TODO: Add your components here
-// spawnProcess('AI Bridge', 'node', ['src/agents/bridge.js']);
-// spawnProcess('Main Server', 'node', ['src/index.js']);
+// Start components
+spawnProcess('AI Bridge', 'node', ['src/agents/bridge.js']);
+spawnProcess('Main Server', 'node', ['src/index.js']);
 
 info('All components started');

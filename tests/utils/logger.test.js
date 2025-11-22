@@ -4,7 +4,7 @@
 
 import { describe, it, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { info, warn, error, debug } from '../../src/utils/logger.js';
+import { info, error } from '../../src/utils/logger.js';
 
 describe('Logger Utility', () => {
   let originalConsole;

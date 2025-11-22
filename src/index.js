@@ -34,8 +34,8 @@ const init = async () => {
         try {
           res.writeHead(500, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ error: 'internal_error' }));
-        } catch (_) {
-          // best effort
+        } catch (_err) {
+          // best effort - error already logged
         }
       }
     });
