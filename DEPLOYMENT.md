@@ -7,8 +7,9 @@ scarmServer uses GitHub Actions to automatically build, test, scan, and deploy D
 ## Deployment Pipeline
 
 ### Trigger Events
+
 - **Push to main**: Automatic deployment
-- **Git tags** (v*.*.*): Semantic versioned releases
+- **Git tags** (v*.*.\*): Semantic versioned releases
 - **Manual**: Via GitHub Actions UI (workflow_dispatch)
 
 ### Quality Gates (Pre-Build)
@@ -41,6 +42,7 @@ scarmServer uses GitHub Actions to automatically build, test, scan, and deploy D
 ## Local Development
 
 ### Prerequisites
+
 ```bash
 # Node.js 18+ and npm
 node --version  # Should be >= 18.0.0
@@ -50,6 +52,7 @@ docker --version
 ```
 
 ### Setup
+
 ```bash
 # Clone repository
 git clone https://github.com/scarmonit/scarmServer.git
@@ -70,6 +73,7 @@ npm run start:dev
 ```
 
 ### Local Testing
+
 ```bash
 # Run all quality checks
 npm run format:check
@@ -89,6 +93,7 @@ curl http://localhost:3000/health
 ## Docker Deployment
 
 ### Build Locally
+
 ```bash
 # Build image
 docker build -t scarmserver:local .
@@ -113,6 +118,7 @@ docker rm -f scarmserver
 ```
 
 ### Docker Compose
+
 ```bash
 # Start services
 docker compose up -d
@@ -131,12 +137,14 @@ docker compose down
 ### Pull from GHCR
 
 #### Public Repository
+
 ```bash
 docker pull ghcr.io/scarmonit/scarmserver:latest
 docker run -d -p 3000:3000 ghcr.io/scarmonit/scarmserver:latest
 ```
 
 #### Private Repository
+
 ```bash
 # Login to GHCR
 echo $GITHUB_TOKEN | docker login ghcr.io -u scarmonit --password-stdin
@@ -154,21 +162,22 @@ docker run -d \
 
 ### Environment Variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `NODE_ENV` | `production` | Runtime environment |
-| `PORT` | `3000` | HTTP server port |
-| `HOST` | `0.0.0.0` | Bind address |
-| `LOG_LEVEL` | `info` | Logging verbosity |
+| Variable    | Default      | Description         |
+| ----------- | ------------ | ------------------- |
+| `NODE_ENV`  | `production` | Runtime environment |
+| `PORT`      | `3000`       | HTTP server port    |
+| `HOST`      | `0.0.0.0`    | Bind address        |
+| `LOG_LEVEL` | `info`       | Logging verbosity   |
 
 ### Production Compose
+
 ```yaml
 version: '3.8'
 services:
   scarmserver:
     image: ghcr.io/scarmonit/scarmserver:latest
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       NODE_ENV: production
       PORT: 3000
@@ -176,7 +185,7 @@ services:
       LOG_LEVEL: info
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
+      test: ['CMD', 'wget', '-qO-', 'http://localhost:3000/health']
       interval: 30s
       timeout: 5s
       retries: 3
@@ -187,11 +196,13 @@ services:
 ## CI/CD Pipeline Details
 
 ### Workflow File
+
 `.github/workflows/deploy.yml`
 
 ### Jobs
 
 #### 1. Test (Pre-build Quality Gates)
+
 - Runs on: `ubuntu-latest`
 - Node version: 22.x
 - Steps:
@@ -205,6 +216,7 @@ services:
   8. Health endpoint smoke test
 
 #### 2. Build-and-Push
+
 - Runs on: `ubuntu-latest`
 - Requires: `test` job success
 - Steps:
@@ -221,6 +233,7 @@ services:
   11. Deployment summary
 
 ### Permissions Required
+
 - `contents: read` - Clone repository
 - `packages: write` - Push to GHCR
 
@@ -229,6 +242,7 @@ services:
 ## Manual Deployment
 
 ### Trigger via GitHub UI
+
 1. Go to repository → Actions
 2. Select "Deploy Container" workflow
 3. Click "Run workflow"
@@ -236,6 +250,7 @@ services:
 5. Click "Run workflow"
 
 ### Create a Release
+
 ```bash
 # Update version in package.json
 npm version patch  # or minor, major
@@ -251,23 +266,28 @@ git push origin main --tags
 ## Monitoring & Health Checks
 
 ### Health Endpoint
+
 ```bash
 GET /health
 ```
 
 **Response (200 OK):**
+
 ```json
-{"status":"ok"}
+{ "status": "ok" }
 ```
 
 ### Docker Health Check
+
 Built into image via `HEALTHCHECK` directive:
+
 ```dockerfile
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD wget -qO- http://localhost:$PORT/health | grep '"status":"ok"' || exit 1
 ```
 
 Check health status:
+
 ```bash
 docker ps  # STATUS column shows "healthy" or "unhealthy"
 docker inspect scarmserver --format='{{.State.Health.Status}}'
@@ -291,7 +311,8 @@ docker inspect scarmserver --format='{{.State.Health.Status}}'
 ### Image Security Scan Fails
 
 **Issue**: HIGH/CRITICAL vulnerabilities found  
-**Solution**: 
+**Solution**:
+
 1. Update dependencies: `npm update`
 2. Review Trivy report in CI logs
 3. Apply security patches
@@ -300,7 +321,8 @@ docker inspect scarmserver --format='{{.State.Health.Status}}'
 ### Container Won't Start
 
 **Issue**: Port already in use  
-**Solution**: 
+**Solution**:
+
 ```bash
 # Find process using port 3000
 netstat -ano | findstr :3000  # Windows
@@ -312,6 +334,7 @@ docker run -p 3001:3000 ghcr.io/scarmonit/scarmserver:latest
 
 **Issue**: Health check failing  
 **Solution**: Check logs
+
 ```bash
 docker logs scarmserver
 ```
@@ -322,7 +345,8 @@ docker logs scarmserver
 **Solution**: Ensure GitHub Actions has `packages: write` permission
 
 **Issue**: Cannot pull private image  
-**Solution**: 
+**Solution**:
+
 ```bash
 # Create GitHub Personal Access Token with `read:packages` scope
 echo $GITHUB_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
@@ -344,12 +368,15 @@ echo $GITHUB_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
 ## Advanced Topics
 
 ### Multi-Stage Builds
+
 Current Dockerfile uses single-stage. For optimization, consider:
+
 - Separate build and runtime stages
 - Use distroless base images for minimal attack surface
 - Cache npm dependencies layer
 
 ### Kubernetes Deployment
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -366,29 +393,31 @@ spec:
         app: scarmserver
     spec:
       containers:
-      - name: scarmserver
-        image: ghcr.io/scarmonit/scarmserver:latest
-        ports:
-        - containerPort: 3000
-        env:
-        - name: NODE_ENV
-          value: production
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 10
-          periodSeconds: 30
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        - name: scarmserver
+          image: ghcr.io/scarmonit/scarmserver:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
 ```
 
 ### Continuous Delivery
+
 For auto-deployment to production, add a workflow that:
+
 1. Monitors GHCR for new `:latest` tag
 2. Pulls image on production server
 3. Performs rolling update
@@ -408,4 +437,3 @@ For auto-deployment to production, add a workflow that:
 
 **Last Updated**: November 22, 2025  
 **Deployment Status**: ✅ Production Ready
-

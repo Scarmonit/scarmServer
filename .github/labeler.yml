@@ -31,4 +31,3 @@
 'config':
   - 'src/config/**/*'
   - '.env.example'
-

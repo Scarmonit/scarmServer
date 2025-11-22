@@ -1,7 +1,8 @@
 ﻿# Code Style Configuration Explanation
+
 **Project**: scarmServer (LLM Framework)
 **Compatible With**: JetBrains IDEs 2023.1+  
-**Last Updated**: November 22, 2025  
+**Last Updated**: November 22, 2025
 
 ---
 
@@ -9,7 +10,7 @@ This custom code style configuration ensures that all code in the scarmServer pr
 
 ## Conclusion
 
-```
+````
 const config = {port: 3000, host: 'localhost'};
 // Not this
 
@@ -18,25 +19,29 @@ const config = { port: 3000, host: 'localhost' };
 ```javascript
 ### Object Literal Spacing
 
-```
+````
+
 import { CONFIG, HTTP_STATUS } from '../config/constants.js';
 import { info, error, warn } from '../utils/logger.js';
 // Properly formatted imports
+
 ```javascript
 ### Import Formatting
 
 ```
+
 );
-  param5
-  param4,
-  param3,
-  param2,
-  param1,
+param5
+param4,
+param3,
+param2,
+param1,
 const result = someVeryLongFunctionName(
 // After wrapping (auto-wrapped at 100 chars)
 
 const result = someVeryLongFunctionName(param1, param2, param3, param4, param5);
 // Before wrapping
+
 ```javascript
 Example:
 
@@ -112,32 +117,38 @@ The `.idea/codeStyles/` directory is included in version control to ensure:
 All tools are configured to work together harmoniously without conflicts.
 
 ```
+
 }
-  "tabWidth": 2
-  "singleQuote": true,
-  "semi": true,
+"tabWidth": 2
+"singleQuote": true,
+"semi": true,
 {
+
 ```json
 Handles automatic code formatting:
 ### Prettier (.prettierrc)
 
 ```
+
 }
-  }
-    "indent": ["error", 2]
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-  "rules": {
+}
+"indent": ["error", 2]
+"quotes": ["error", "single"],
+"semi": ["error", "always"],
+"rules": {
 {
+
 ```json
 Enforces code quality rules:
 ### ESLint (.eslintrc.json)
 
 ```
+
 quote_type = single
 indent_size = 2
 indent_style = space
 [*.{js,ts}]
+
 ```ini
 Provides baseline settings for any editor:
 ### EditorConfig (.editorconfig)
@@ -184,6 +195,7 @@ When a developer opens this project in a JetBrains IDE, the IDE will automatical
 ## Practical Impact
 
 ```
+
 </codeStyleSettings>
   </indentOptions>
     <option name="TAB_SIZE" value="2" />
@@ -198,9 +210,9 @@ When a developer opens this project in a JetBrains IDE, the IDE will automatical
 - **Object Braces**: Spaces inside `{ }` for object literals
 - **Quotes**: Single quotes only (double quotes disabled)
 - **Semicolons**: Always required
-Key enforcements:
+  Key enforcements:
 
-```
+````
 </JSCodeStyleSettings>
   <!-- More settings... -->
   <option name="SPACES_WITHIN_OBJECT_LITERAL_BRACES" value="true" />
@@ -213,7 +225,8 @@ Key enforcements:
 
 ### Language-Specific Configurations
 
-```
+````
+
 </component>
   </code_scheme>
     <!-- Language-specific settings -->
@@ -233,11 +246,12 @@ The file uses JetBrains' component-based architecture:
 - **Indentation**: 2 spaces for JavaScript, TypeScript, and JSON
 
 This file contains the complete custom code style scheme tailored for the LLM Framework standards:
+
 ### 2. Project.xml
 
 The `USE_PER_PROJECT_SETTINGS` option tells the IDE to use the custom project-specific code style scheme defined in `Project.xml` instead of the user's global IDE settings.
 
-```
+````
 </component>
   </state>
     <option name="USE_PER_PROJECT_SETTINGS" value="true" />
@@ -257,3 +271,4 @@ This XML file is a JetBrains IDE configuration file that defines code styling pr
 ## Overview
 
 
+````

@@ -1,9 +1,11 @@
 ﻿# Pull Request
 
 ## Description
+
 Provide a summary of the changes and the problem they solve.
 
 ## Type of Change
+
 - [ ] Feature
 - [ ] Fix
 - [ ] Refactor
@@ -12,6 +14,7 @@ Provide a summary of the changes and the problem they solve.
 - [ ] Chore
 
 ## Checklist
+
 - [ ] Tests pass (`npm test`)
 - [ ] Lint clean (`npm run lint`)
 - [ ] Formatting clean (`npm run format:check`)
@@ -21,11 +24,13 @@ Provide a summary of the changes and the problem they solve.
 - [ ] Documentation updated (README / guides)
 
 ## Screenshots / Logs
+
 If applicable.
 
 ## Linked Issues
+
 Closes #
 
 ## Additional Notes
-Add any additional context.
 
+Add any additional context.

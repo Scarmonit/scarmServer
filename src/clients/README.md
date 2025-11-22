@@ -33,4 +33,3 @@ for await (const chunk of client.stream('Your prompt here')) {
 2. Implement `complete()` and `stream()` methods
 3. Add provider-specific configuration
 4. Include proper error handling and logging
-

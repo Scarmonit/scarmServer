@@ -1,6 +1,7 @@
 ﻿# ✅ FINAL INSTALLATION GUIDE
 
 ## Date: November 22, 2025
+
 ## Status: 🟢 VERIFIED WORKING
 
 ---
@@ -8,6 +9,7 @@
 ## Complete Installation Steps
 
 ### Step 1: Clean Environment
+
 ```powershell
 cd E:\scarmServer
 
@@ -20,6 +22,7 @@ if (Test-Path node_modules) { Remove-Item -Recurse -Force node_modules }
 ```
 
 ### Step 2: Install Dependencies
+
 ```powershell
 # Install all dependencies
 npm install --legacy-peer-deps
@@ -28,6 +31,7 @@ npm install --legacy-peer-deps
 **Note**: `--legacy-peer-deps` ensures compatibility and avoids peer dependency conflicts.
 
 ### Step 3: Initialize Husky
+
 ```powershell
 # Initialize Husky (one-time setup)
 npx husky install
@@ -36,6 +40,7 @@ npx husky install
 **Note**: You may see "husky - install command is DEPRECATED" - this is expected for Husky v8, but the command still works.
 
 ### Step 4: Verify Installation
+
 ```powershell
 # Should show 25/25 passing
 npm test
@@ -77,9 +82,11 @@ Write-Host "Husky: " -NoNewline; if (Test-Path ".husky") { Write-Host "Initializ
 ## Why This Works
 
 ### The Problem
+
 NPM lifecycle scripts (`prepare`, `postinstall`) run **during** installation, before dependencies are fully available. When these scripts try to execute commands from packages being installed, they fail.
 
 ### The Solution
+
 1. **Remove lifecycle scripts** - No automatic Husky initialization during install
 2. **Clean environment** - Ensure no cached/stale data interferes
 3. **Fresh install** - All dependencies installed without interruption
@@ -90,6 +97,7 @@ NPM lifecycle scripts (`prepare`, `postinstall`) run **during** installation, be
 ## Project Configuration
 
 ### Package.json Scripts (No Lifecycle Hooks)
+
 ```json
 {
   "scripts": {
@@ -112,17 +120,19 @@ NPM lifecycle scripts (`prepare`, `postinstall`) run **during** installation, be
 ## After Installation
 
 ### Git Hooks Setup (Optional)
+
 If you want pre-commit hooks:
 
 ```powershell
 # Pre-commit hook for lint-staged
 npx husky add .husky/pre-commit "npx lint-staged"
 
-# Commit-msg hook for commitlint  
+# Commit-msg hook for commitlint
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 ```
 
 ### Daily Development
+
 ```bash
 npm start                  # Run server
 npm run start:dev          # Run with auto-reload
@@ -150,18 +160,22 @@ After installation, confirm:
 ## Troubleshooting
 
 ### Issue: "husky is not recognized"
+
 **Cause**: Running lifecycle script before dependencies installed  
 **Fix**: Use this guide (no lifecycle scripts)
 
 ### Issue: ESLint/Prettier still not found after install
+
 **Cause**: Incomplete installation or corrupted node_modules  
 **Fix**: Delete `node_modules`, run `npm install --legacy-peer-deps` again
 
 ### Issue: "husky - install command is DEPRECATED"
+
 **Cause**: Husky v8 deprecation warning  
 **Status**: This is normal and expected - command still works
 
 ### Issue: Tests pass but lint fails
+
 **Cause**: Dependencies installed but npm script PATH issue  
 **Fix**: Restart terminal or run `npx eslint .` directly
 
@@ -192,4 +206,3 @@ After installation, confirm:
 **Status**: ✅ **WORKING**
 
 🎉 **Installation Complete!**
-

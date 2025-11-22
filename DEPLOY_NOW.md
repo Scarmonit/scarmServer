@@ -7,6 +7,7 @@ Your scarmServer deployment infrastructure is **fully committed** to git and rea
 ### What's Already Done
 
 ✅ **All files committed** with comprehensive deployment infrastructure:
+
 - GitHub Actions CI/CD workflow (`.github/workflows/deploy.yml`)
 - Multi-arch Dockerfile with HEALTHCHECK
 - Docker Compose configuration
@@ -34,9 +35,10 @@ The push command is waiting for your GitHub credentials. You have **3 options**:
    - **Copy the token immediately** (you won't see it again!)
 
 2. **Push with token**:
+
    ```powershell
    # Cancel current command (Ctrl+C if still running)
-   
+
    # Push using token as password
    git push -u origin main
    # Username: scarmonit
@@ -104,12 +106,14 @@ Once you authenticate and push, GitHub Actions will **automatically**:
 ### Monitor Deployment
 
 After push:
+
 ```powershell
 # Open in browser
 start https://github.com/scarmonit/scarmServer/actions
 ```
 
 Or check from CLI:
+
 ```powershell
 # Install GitHub CLI (if not already)
 gh run list
@@ -161,10 +165,11 @@ If the push command is still stuck:
 If you see "repository not found":
 
 1. **Create repository on GitHub**:
+
    ```powershell
    # Using GitHub CLI
    gh repo create scarmonit/scarmServer --public --source=. --remote=origin
-   
+
    # Then push
    git push -u origin main
    ```
@@ -224,11 +229,10 @@ Then check GitHub Actions: https://github.com/scarmonit/scarmServer/actions
 
 **Status**: ⏸️ **WAITING FOR AUTHENTICATION**  
 **Next Action**: Provide GitHub credentials (use Personal Access Token - Option 1)  
-**After Push**: GitHub Actions will deploy automatically  
+**After Push**: GitHub Actions will deploy automatically
 
 ---
 
 **Last Updated**: November 22, 2025  
 **Deployment Pipeline**: ✅ Ready  
 **Awaiting**: User authentication
-

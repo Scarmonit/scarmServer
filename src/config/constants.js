@@ -50,4 +50,3 @@ export const PATHS = {
   DATA: './data',
   CACHE: './cache',
 };
-

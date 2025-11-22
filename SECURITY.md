@@ -19,6 +19,7 @@ Please **do not** open a public GitHub issue for security vulnerabilities.
 Send an email to: **Scarmonit@gmail.com**
 
 Include:
+
 - Description of the vulnerability
 - Steps to reproduce
 - Potential impact
@@ -45,12 +46,14 @@ Include:
 When using scarmServer:
 
 ### Environment Variables
+
 - ✅ Always use `.env` files for sensitive data
 - ✅ Never commit `.env` files to version control
 - ✅ Use strong, unique API keys
 - ✅ Rotate credentials regularly
 
 ### Input Validation
+
 ```javascript
 import { validateRequired, validateEmail } from './utils/validation.js';
 
@@ -60,6 +63,7 @@ validateEmail(email, 'email');
 ```
 
 ### Error Handling
+
 ```javascript
 // Don't expose internal errors to users
 try {
@@ -72,6 +76,7 @@ try {
 ```
 
 ### Logging
+
 ```javascript
 // Never log sensitive data
 info('User logged in', { userId: user.id }); // ✓ Good
@@ -79,16 +84,19 @@ info('User logged in', { password: user.password }); // ✗ Bad
 ```
 
 ### Dependencies
+
 - Keep dependencies up to date
 - Run `npm audit` regularly
 - Review security advisories
 
 ### Rate Limiting
+
 - Implement rate limiting for public APIs
 - Protect against brute force attacks
 - Use timeouts for long-running operations
 
 ### HTTPS
+
 - Always use HTTPS in production
 - Enforce secure connections
 - Use modern TLS versions
@@ -96,16 +104,19 @@ info('User logged in', { password: user.password }); // ✗ Bad
 ## Known Security Considerations
 
 ### Logging
+
 - Logger outputs to console by default
 - Ensure logs are properly secured in production
 - Consider using external logging services
 
 ### Session Management
+
 - Implement proper session timeout
 - Use secure session storage
 - Validate session tokens
 
 ### API Keys
+
 - Store API keys in environment variables
 - Never hardcode credentials
 - Use principle of least privilege
@@ -113,6 +124,7 @@ info('User logged in', { password: user.password }); // ✗ Bad
 ## Security Updates
 
 We will announce security updates through:
+
 - GitHub Security Advisories
 - Repository CHANGELOG.md
 - Email to reported vulnerability contacts
@@ -125,4 +137,3 @@ We appreciate responsible disclosure and will acknowledge security researchers w
 
 **Last Updated**: November 22, 2025  
 **Contact**: Scarmonit@gmail.com
-

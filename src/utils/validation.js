@@ -45,7 +45,7 @@ export const validateLength = (value, min, max, fieldName) => {
   if (value.length < min || value.length > max) {
     throw new ValidationError(
       `${fieldName} must be between ${min} and ${max} characters`,
-      fieldName,
+      fieldName
     );
   }
 };
@@ -85,4 +85,3 @@ export default {
   validateEmail,
   validateRequiredFields,
 };
-

@@ -1,18 +1,22 @@
 ﻿# 🔧 Installation Fix - Husky Bootstrap Issue
 
 ## Problem
+
 `npm install` fails with:
+
 ```
 'husky' is not recognized as an internal or external command
 npm error code 1
 ```
 
 ## Root Cause
+
 The `prepare` or `postinstall` script tries to run `husky install` before Husky itself is installed, creating a circular dependency.
 
 ## Solution
 
 ### Step 1: Clean Installation
+
 ```powershell
 # Remove existing artifacts
 Remove-Item package-lock.json -ErrorAction SilentlyContinue
@@ -23,11 +27,13 @@ npm install --no-save
 ```
 
 ### Step 2: Initialize Husky Manually
+
 ```powershell
 npx husky install
 ```
 
 ### Step 3: Set Up Git Hooks
+
 ```powershell
 # Pre-commit hook (lint-staged)
 npx husky add .husky/pre-commit "npx lint-staged"
@@ -37,6 +43,7 @@ npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 ```
 
 ### Step 4: Verify Installation
+
 ```powershell
 # All tests should pass
 npm test
@@ -54,6 +61,7 @@ Test-Path .husky
 ```
 
 ## Alternative: One-Command Fix
+
 ```powershell
 cd E:\scarmServer
 Remove-Item package-lock.json -ErrorAction SilentlyContinue
@@ -67,6 +75,7 @@ npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 ## Why This Happens
 
 NPM lifecycle scripts run in this order:
+
 1. `preinstall`
 2. Install dependencies
 3. `install`
@@ -80,9 +89,11 @@ If `prepare` or `postinstall` tries to run a command from a package that's being
 For projects with similar issues:
 
 ### Option A: Don't Use Auto-Install Scripts
+
 Remove `prepare`/`postinstall` from package.json and document manual setup in README.
 
 ### Option B: Use Optional Chaining
+
 ```json
 {
   "scripts": {
@@ -92,6 +103,7 @@ Remove `prepare`/`postinstall` from package.json and document manual setup in RE
 ```
 
 ### Option C: Conditional Execution (Recommended)
+
 ```json
 {
   "scripts": {
@@ -127,4 +139,3 @@ After running the fix:
 **Last Updated**: November 22, 2025  
 **Issue**: Husky bootstrap circular dependency  
 **Resolution**: Manual initialization after dependency install
-

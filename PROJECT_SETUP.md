@@ -48,6 +48,7 @@ scarmServer/
 ## 🎯 Code Style Standards Enforced
 
 ### Formatting
+
 - **Indentation**: 2 spaces (no tabs)
 - **Line Length**: 100 characters max
 - **Quotes**: Single quotes (backticks for templates)
@@ -55,6 +56,7 @@ scarmServer/
 - **Line Endings**: LF (Unix-style)
 
 ### JavaScript/TypeScript
+
 - **Module System**: ES Modules only (`import`/`export`)
 - **Async/Await**: Always use over raw promises
 - **Error Handling**: Comprehensive try-catch blocks
@@ -62,6 +64,7 @@ scarmServer/
 - **Configuration**: Import from `./config/constants.js`
 
 ### Naming Conventions
+
 - **camelCase**: functions, variables
 - **PascalCase**: classes, constructors
 - **UPPER_SNAKE_CASE**: constants
@@ -108,27 +111,30 @@ npm run format:check
 ## ✨ Features Implemented
 
 ### 1. JetBrains IDE Integration
+
 - Custom code style scheme in `.idea/codeStyles/Project.xml`
 - Automatic formatting on Ctrl+Alt+L / Cmd+Alt+L
 - Consistent code generation
 - Per-project settings enabled
 
 ### 2. Cross-Editor Support
+
 - EditorConfig for universal formatting
 - Works with VS Code, Sublime Text, Atom, etc.
 
 ### 3. Code Quality Tools
+
 - **ESLint**: JavaScript/TypeScript linting
   - Warns on `console.log` usage
   - Enforces single quotes
   - Requires semicolons
   - Max line length 100 chars
-  
 - **Prettier**: Code formatting
   - Consistent style across the codebase
   - Integrates with ESLint
 
 ### 4. LLM Framework Structure
+
 - **Agents Directory**: A2A protocol implementations
 - **Clients Directory**: LLM API client wrappers
 - **Utils Directory**: Shared utilities (logger, validation)
@@ -136,6 +142,7 @@ npm run format:check
 - **Tests Directory**: Node.js test runner tests
 
 ### 5. Best Practices
+
 - Environment variables template (`.env.example`)
 - Comprehensive `.gitignore`
 - Logger utility (no `console.log`)
@@ -148,6 +155,7 @@ npm run format:check
 ## 🚀 Next Steps
 
 ### 1. Set Up Environment
+
 ```bash
 # Copy environment template
 cp .env.example .env
@@ -156,16 +164,19 @@ cp .env.example .env
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Run Tests
+
 ```bash
 npm test
 ```
 
 ### 4. Start Development
+
 ```bash
 npm run start:dev
 ```
@@ -191,9 +202,10 @@ npm run start:dev
    - Verify no `console.log` statements
 
 4. **Commit Message Format**
+
    ```
    <type>(<scope>): <subject>
-   
+
    Types: feat, fix, docs, style, refactor, test, chore
    Example: feat(logger): add debug level support
    ```
@@ -254,6 +266,7 @@ npm start
 ## 🎉 You're Ready to Go!
 
 Your scarmServer project is fully configured with:
+
 - ✅ JetBrains IDE code style
 - ✅ ESLint + Prettier
 - ✅ EditorConfig
@@ -265,4 +278,3 @@ Your scarmServer project is fully configured with:
 - ✅ Git configuration
 
 Happy coding! 🚀
-

@@ -13,26 +13,31 @@ This project uses a comprehensive code style configuration to ensure consistency
 For a deeper explanation of the JetBrains configuration internals see `code_explanation.md`.
 
 ### JetBrains IDE Settings
+
 - **`.idea/codeStyles/codeStyleConfig.xml`** - Enables per-project code style settings
 - **`.idea/codeStyles/Project.xml`** - Custom project code style scheme
 
 These files ensure that JetBrains IDEs (IntelliJ IDEA, WebStorm, etc.) automatically apply the correct formatting rules.
 
 ### EditorConfig
+
 - **`.editorconfig`** - Cross-editor configuration for basic formatting rules
 - Works with JetBrains IDEs, VS Code, and most modern editors
 
 ### ESLint
+
 - **`eslint.config.js`** - Modern flat config (replaces legacy `.eslintrc.json`)
 - **`.eslintignore`** - Files to exclude from linting
 
 ### Prettier
+
 - **`.prettierrc`** - Code formatting configuration
 - **`.prettierignore`** - Files to exclude from formatting
 
 ## Code Style Standards
 
 ### General Rules
+
 - **Indentation**: 2 spaces (no tabs)
 - **Line Length**: Maximum 100 characters
 - **Quotes**: Single quotes for strings, backticks for templates
@@ -40,12 +45,14 @@ These files ensure that JetBrains IDEs (IntelliJ IDEA, WebStorm, etc.) automatic
 - **Line Endings**: LF (Unix-style)
 
 ### JavaScript/TypeScript
+
 - **Module System**: ES Modules only (`import`/`export`, never `require`)
 - **Async/Await**: Always use async/await instead of raw promises
 - **Error Handling**: Comprehensive try-catch blocks required
 - **Logging**: Use logger from `./utils/logger.js`, never `console.log`
 
 ### Naming Conventions
+
 - **camelCase**: Functions, variables, methods
 - **PascalCase**: Classes, constructors, components
 - **UPPER_SNAKE_CASE**: Constants
@@ -54,19 +61,24 @@ These files ensure that JetBrains IDEs (IntelliJ IDEA, WebStorm, etc.) automatic
 ## IDE Integration
 
 ### JetBrains IDEs (IntelliJ IDEA, WebStorm, PyCharm)
+
 The code style is automatically applied when you:
+
 - Format code (Ctrl+Alt+L / Cmd+Alt+L)
 - Generate code
 - Use auto-completion
 - Organize imports
 
 ### VS Code
+
 Install the following extensions for full support:
+
 - EditorConfig for VS Code
 - ESLint
 - Prettier - Code formatter
 
 ### Other Editors
+
 Most modern editors support EditorConfig out of the box or via plugins.
 
 ## ✨ Features
@@ -83,6 +95,7 @@ Most modern editors support EditorConfig out of the box or via plugins.
 ## 📊 Test Coverage
 
 Thresholds enforced (fail CI if below):
+
 - Lines ≥ 80%
 - Statements ≥ 80%
 - Functions ≥ 70%
@@ -95,6 +108,7 @@ Thresholds enforced (fail CI if below):
 ```
 
 Test areas:
+
 - Logger utility (3 tests)
 - Validation helpers (16 tests)
 - Configuration constants (6 tests)
@@ -126,6 +140,7 @@ npm run format:check       # Check formatting
 ```
 
 ### Format Code
+
 ```bash
 # Format all files (requires prettier)
 npx prettier --write .
@@ -138,7 +153,9 @@ npx eslint --fix .
 ```
 
 ### Pre-commit Checks
+
 Before committing code, ensure:
+
 - [ ] All tests pass
 - [ ] Linting is clean
 - [ ] No `console.log` statements
@@ -146,6 +163,7 @@ Before committing code, ensure:
 - [ ] Documentation is updated
 
 ## Project Structure (LLM Framework)
+
 ```
 scarmServer/
 ├── src/
@@ -187,6 +205,7 @@ Last Updated: November 22, 2025
 Images are published to GitHub Container Registry via `deploy.yml` on pushes to `main`.
 
 **Quick Start:**
+
 ```powershell
 # Pull and run latest
 docker run -p 3000:3000 ghcr.io/scarmonit/scarmserver:latest
@@ -196,24 +215,29 @@ curl http://localhost:3000/health
 ```
 
 **For private repos:**
+
 ```powershell
 echo $env:GITHUB_TOKEN | docker login ghcr.io -u scarmonit --password-stdin
 docker run -p 3000:3000 ghcr.io/scarmonit/scarmserver:latest
 ```
 
 ### Docker Compose
+
 ```powershell
 docker compose up -d
 ```
 
 ### Local Node
+
 ```powershell
 npm start
 # Open http://localhost:3000/health
 ```
 
 ### Full Documentation
+
 See [DEPLOYMENT.md](DEPLOYMENT.md) for:
+
 - CI/CD pipeline details
 - Production deployment guide
 - Environment variables

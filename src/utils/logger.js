@@ -67,9 +67,7 @@ export const warn = (message, meta = {}) => {
  */
 export const error = (message, error = {}) => {
   if (currentLevel <= LOG_LEVELS.error) {
-    const meta = error instanceof Error
-      ? { error: error.message, stack: error.stack }
-      : error;
+    const meta = error instanceof Error ? { error: error.message, stack: error.stack } : error;
     console.error(formatMessage('error', message, meta));
   }
 };
@@ -80,4 +78,3 @@ export default {
   warn,
   error,
 };
-

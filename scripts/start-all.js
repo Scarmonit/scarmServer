@@ -65,4 +65,3 @@ info('Starting scarmServer system...');
 // spawnProcess('Main Server', 'node', ['src/index.js']);
 
 info('All components started');
-

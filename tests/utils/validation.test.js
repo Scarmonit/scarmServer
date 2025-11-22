@@ -36,18 +36,9 @@ describe('Validation Utilities', () => {
     });
 
     it('should throw for null, undefined, or empty string', () => {
-      assert.throws(
-        () => validateRequired(null, 'field'),
-        ValidationError,
-      );
-      assert.throws(
-        () => validateRequired(undefined, 'field'),
-        ValidationError,
-      );
-      assert.throws(
-        () => validateRequired('', 'field'),
-        ValidationError,
-      );
+      assert.throws(() => validateRequired(null, 'field'), ValidationError);
+      assert.throws(() => validateRequired(undefined, 'field'), ValidationError);
+      assert.throws(() => validateRequired('', 'field'), ValidationError);
     });
   });
 
@@ -58,25 +49,13 @@ describe('Validation Utilities', () => {
     });
 
     it('should throw for strings outside valid length', () => {
-      assert.throws(
-        () => validateLength('a', 2, 10, 'field'),
-        ValidationError,
-      );
-      assert.throws(
-        () => validateLength('very long string', 1, 5, 'field'),
-        ValidationError,
-      );
+      assert.throws(() => validateLength('a', 2, 10, 'field'), ValidationError);
+      assert.throws(() => validateLength('very long string', 1, 5, 'field'), ValidationError);
     });
 
     it('should throw for non-string values', () => {
-      assert.throws(
-        () => validateLength(123, 1, 10, 'field'),
-        ValidationError,
-      );
-      assert.throws(
-        () => validateLength(null, 1, 10, 'field'),
-        ValidationError,
-      );
+      assert.throws(() => validateLength(123, 1, 10, 'field'), ValidationError);
+      assert.throws(() => validateLength(null, 1, 10, 'field'), ValidationError);
     });
   });
 
@@ -104,10 +83,7 @@ describe('Validation Utilities', () => {
       ];
 
       invalidEmails.forEach((email) => {
-        assert.throws(
-          () => validateEmail(email),
-          ValidationError,
-        );
+        assert.throws(() => validateEmail(email), ValidationError);
       });
     });
   });
@@ -120,9 +96,7 @@ describe('Validation Utilities', () => {
         age: 30,
       };
 
-      assert.doesNotThrow(() =>
-        validateRequiredFields(obj, ['name', 'email', 'age']),
-      );
+      assert.doesNotThrow(() => validateRequiredFields(obj, ['name', 'email', 'age']));
     });
 
     it('should throw when required fields are missing', () => {
@@ -130,10 +104,7 @@ describe('Validation Utilities', () => {
         name: 'John',
       };
 
-      assert.throws(
-        () => validateRequiredFields(obj, ['name', 'email']),
-        ValidationError,
-      );
+      assert.throws(() => validateRequiredFields(obj, ['name', 'email']), ValidationError);
     });
 
     it('should throw when required fields are null or undefined', () => {
@@ -143,14 +114,8 @@ describe('Validation Utilities', () => {
         age: undefined,
       };
 
-      assert.throws(
-        () => validateRequiredFields(obj, ['name', 'email']),
-        ValidationError,
-      );
-      assert.throws(
-        () => validateRequiredFields(obj, ['name', 'age']),
-        ValidationError,
-      );
+      assert.throws(() => validateRequiredFields(obj, ['name', 'email']), ValidationError);
+      assert.throws(() => validateRequiredFields(obj, ['name', 'age']), ValidationError);
     });
 
     it('should not throw for empty string values', () => {
@@ -163,4 +128,3 @@ describe('Validation Utilities', () => {
     });
   });
 });
-

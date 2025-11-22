@@ -9,22 +9,23 @@ cp .env.example .env
 
 ## 🎯 NPM Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm start` | Start the server |
-| `npm run start:dev` | Start with auto-reload |
-| `npm run start:bridge` | Start A2A Bridge |
-| `npm run system:start` | Start all components |
-| `npm test` | Run tests |
+| Command                 | Description             |
+| ----------------------- | ----------------------- |
+| `npm start`             | Start the server        |
+| `npm run start:dev`     | Start with auto-reload  |
+| `npm run start:bridge`  | Start A2A Bridge        |
+| `npm run system:start`  | Start all components    |
+| `npm test`              | Run tests               |
 | `npm run test:coverage` | Run tests with coverage |
-| `npm run lint` | Check code style |
-| `npm run lint:fix` | Fix code style issues |
-| `npm run format` | Format all files |
-| `npm run format:check` | Check formatting |
+| `npm run lint`          | Check code style        |
+| `npm run lint:fix`      | Fix code style issues   |
+| `npm run format`        | Format all files        |
+| `npm run format:check`  | Check formatting        |
 
 ## 🎨 Code Style
 
 ### Formatting Rules
+
 ```javascript
 // Indentation: 2 spaces
 const example = {
@@ -45,13 +46,14 @@ const greeting = `Hello, ${name}!`;
 ```
 
 ### Naming Conventions
+
 ```javascript
 // camelCase: variables, functions
 const userName = 'John';
-function getUserData() { }
+function getUserData() {}
 
 // PascalCase: classes
-class UserManager { }
+class UserManager {}
 
 // UPPER_SNAKE_CASE: constants
 const MAX_RETRIES = 3;
@@ -147,10 +149,7 @@ describe('MyModule', () => {
   });
 
   it('should handle errors', async () => {
-    await assert.rejects(
-      async () => await myFunction(invalid),
-      { name: 'ValidationError' }
-    );
+    await assert.rejects(async () => await myFunction(invalid), { name: 'ValidationError' });
   });
 });
 ```
@@ -172,13 +171,15 @@ const processData = async (data) => {
 
 // ✗ Bad
 const processData = (data) => {
-  validate(data).then((validated) => {
-    save(validated).then((result) => {
-      return result;
+  validate(data)
+    .then((validated) => {
+      save(validated).then((result) => {
+        return result;
+      });
+    })
+    .catch((err) => {
+      console.log(err);
     });
-  }).catch((err) => {
-    console.log(err);
-  });
 };
 ```
 
@@ -225,13 +226,13 @@ const port = CONFIG.PORT;
 
 ## 🚫 Anti-Patterns
 
-| ❌ Don't | ✅ Do |
-|---------|-------|
-| `console.log('message')` | `info('message')` |
-| `require('./module')` | `import module from './module.js'` |
-| `const port = 3000` | `const port = CONFIG.PORT` |
-| `fs.readFileSync('file')` | `await readFile('file')` |
-| `promise.then().catch()` | `await promise` in try-catch |
+| ❌ Don't                  | ✅ Do                              |
+| ------------------------- | ---------------------------------- |
+| `console.log('message')`  | `info('message')`                  |
+| `require('./module')`     | `import module from './module.js'` |
+| `const port = 3000`       | `const port = CONFIG.PORT`         |
+| `fs.readFileSync('file')` | `await readFile('file')`           |
+| `promise.then().catch()`  | `await promise` in try-catch       |
 
 ## 🔄 Git Workflow
 
@@ -263,4 +264,3 @@ git push origin feature/my-feature
 **Version**: 1.0.0  
 **Last Updated**: November 22, 2025  
 **Maintained by**: Parker Dunn
-

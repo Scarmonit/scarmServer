@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 #### Project Setup
+
 - Initial project structure following LLM Framework standards
 - Comprehensive code style configuration for JetBrains IDEs
 - EditorConfig for cross-editor consistency
@@ -18,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Git configuration and .gitignore
 
 #### Documentation
+
 - README.md with project overview
 - PROJECT_SETUP.md with complete setup guide
 - CODE_STYLE_GUIDE.md with detailed style explanations
@@ -27,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CHANGELOG.md (this file)
 
 #### Source Code
+
 - `src/index.js` - Main application entry point
 - `src/config/constants.js` - Centralized configuration
 - `src/utils/logger.js` - Structured logging utility
@@ -35,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `src/clients/llm-client.js` - Base LLM client class
 
 #### Testing
+
 - Node.js native test runner configuration
 - Logger utility tests (3 tests)
 - Validation utility tests (16 tests)
@@ -42,15 +46,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Total: 25 tests, all passing ✓
 
 #### Scripts
+
 - `scripts/start-all.js` - System-wide startup script
 - NPM scripts for development workflow
 
 #### CI/CD
+
 - GitHub Actions workflow for automated testing
 - Multi-version Node.js testing (18.x, 20.x, 22.x)
 - Automated linting and formatting checks
 
 #### Code Style Features
+
 - JetBrains IDE integration (.idea/codeStyles/)
 - 2-space indentation enforcement
 - Single quote enforcement
@@ -61,17 +68,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - No console.log (use logger)
 
 ### Code Style Standards
+
 - camelCase for functions and variables
 - PascalCase for classes
 - UPPER_SNAKE_CASE for constants
 - kebab-case for file names
 
 ### Dependencies
+
 - `dotenv` - Environment variable management
 - `eslint` - Code linting (dev)
 - `prettier` - Code formatting (dev)
 
 ### Development Workflow
+
 - Test-driven development with Node.js test runner
 - Automatic code formatting on save (IDE)
 - Pre-commit checklist documentation
@@ -82,6 +92,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned Features
+
 - WebSocket server implementation
 - A2A protocol handlers
 - Session management
@@ -98,11 +109,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Version History
 
 ### Version Format
+
 - **MAJOR**: Breaking changes
 - **MINOR**: New features (backward compatible)
 - **PATCH**: Bug fixes (backward compatible)
 
 ### Release Types
+
 - `[X.Y.Z]` - Released version
 - `[Unreleased]` - Upcoming changes
 
@@ -110,4 +123,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Maintained by**: Parker Dunn (Scarmonit@gmail.com)  
 **License**: MIT
-

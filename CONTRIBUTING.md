@@ -30,23 +30,27 @@ Thank you for considering contributing to scarmServer! This document provides gu
 ### Initial Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd scarmServer
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment**
+
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
    ```
 
 4. **Run tests**
+
    ```bash
    npm test
    ```
@@ -109,12 +113,14 @@ Then create a pull request on the repository.
 ### Automatic Formatting
 
 The project uses automatic code formatting enforced by:
+
 - JetBrains IDE code style settings
 - ESLint
 - Prettier
 - EditorConfig
 
 **Format code before committing:**
+
 ```bash
 npm run format
 npm run lint:fix
@@ -123,6 +129,7 @@ npm run lint:fix
 ### Key Standards
 
 #### General
+
 - **Indentation**: 2 spaces (no tabs)
 - **Line Length**: 100 characters max
 - **Quotes**: Single quotes (`'`), backticks for templates
@@ -130,6 +137,7 @@ npm run lint:fix
 - **Line Endings**: LF (Unix-style)
 
 #### JavaScript/TypeScript
+
 ```javascript
 // ✓ Good
 import { info } from './utils/logger.js';
@@ -146,27 +154,31 @@ const myFunction = async (param1, param2) => {
 };
 
 // ✗ Bad
-const myFunction = async (param1,param2)=>{
-console.log("Processing request")  // No semicolon, double quotes, console.log
-let result=await someAsyncOperation(param1)  // No spacing
-return result
-}
+const myFunction = async (param1, param2) => {
+  console.log('Processing request'); // No semicolon, double quotes, console.log
+  let result = await someAsyncOperation(param1); // No spacing
+  return result;
+};
 ```
 
 #### Naming Conventions
+
 - **camelCase**: functions, variables, methods
+
   ```javascript
   const userName = 'John';
-  function getUserData() { }
+  function getUserData() {}
   ```
 
 - **PascalCase**: classes, constructors
+
   ```javascript
-  class UserManager { }
-  class HttpClient { }
+  class UserManager {}
+  class HttpClient {}
   ```
 
 - **UPPER_SNAKE_CASE**: constants
+
   ```javascript
   const MAX_RETRY_COUNT = 3;
   const API_BASE_URL = 'https://api.example.com';
@@ -182,6 +194,7 @@ return result
 ### Anti-Patterns to Avoid
 
 ❌ **Don't use `console.log`**
+
 ```javascript
 // ✗ Bad
 console.log('Debug message');
@@ -192,6 +205,7 @@ info('Debug message');
 ```
 
 ❌ **Don't use `require()`**
+
 ```javascript
 // ✗ Bad
 const logger = require('./utils/logger');
@@ -201,6 +215,7 @@ import logger from './utils/logger.js';
 ```
 
 ❌ **Don't hardcode values**
+
 ```javascript
 // ✗ Bad
 const port = 3000;
@@ -211,6 +226,7 @@ const port = CONFIG.PORT;
 ```
 
 ❌ **Don't use synchronous operations**
+
 ```javascript
 // ✗ Bad
 const data = fs.readFileSync('file.txt');
@@ -249,10 +265,7 @@ describe('MyModule', () => {
   });
 
   it('should handle errors gracefully', async () => {
-    await assert.rejects(
-      async () => await myFunction(invalidInput),
-      { name: 'ValidationError' }
-    );
+    await assert.rejects(async () => await myFunction(invalidInput), { name: 'ValidationError' });
   });
 });
 ```
@@ -283,6 +296,7 @@ npm run test:coverage
 ```
 
 #### Types
+
 - **feat**: New feature
 - **fix**: Bug fix
 - **docs**: Documentation changes
@@ -323,16 +337,19 @@ environment setup steps.
 ### Before Submitting
 
 1. **Ensure all tests pass**
+
    ```bash
    npm test
    ```
 
 2. **Fix linting issues**
+
    ```bash
    npm run lint:fix
    ```
 
 3. **Format code**
+
    ```bash
    npm run format
    ```
@@ -363,18 +380,22 @@ environment setup steps.
 
 ```markdown
 ## Description
+
 Brief description of what this PR does.
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Testing
+
 Describe the tests you ran and how to reproduce.
 
 ## Checklist
+
 - [ ] All tests pass
 - [ ] Linting clean
 - [ ] Documentation updated
@@ -392,6 +413,7 @@ Describe the tests you ran and how to reproduce.
 ## Questions?
 
 If you have questions:
+
 - Check existing documentation
 - Review closed issues
 - Ask in PR comments
@@ -400,4 +422,3 @@ If you have questions:
 ---
 
 **Thank you for contributing to scarmServer!** 🚀
-

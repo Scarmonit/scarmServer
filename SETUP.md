@@ -3,11 +3,12 @@
 ## Initial Setup
 
 1. **Install Dependencies**
+
    ```bash
    cd E:\scarmServer
    npm install
    ```
-   
+
    This installs:
    - ESLint (code linting)
    - Prettier (code formatting)
@@ -15,22 +16,24 @@
    - Husky (git hooks) - auto-initialized via postinstall
    - Commitlint (commit message validation)
    - Lint-staged (pre-commit automation)
-   
+
    **Note**: Husky hooks are automatically set up during installation via the `postinstall` script.
 
 2. **Run Tests**
+
    ```bash
    npm test
    ```
-   
+
    Expected: 25/25 tests passing ✓
 
 3. **Verify Code Quality**
+
    ```bash
    npm run lint
    npm run format:check
    ```
-   
+
    Both should complete without errors.
 
 ## Common Commands
@@ -54,14 +57,17 @@ npm run format:check       # Check formatting (CI)
 ## Troubleshooting
 
 ### "eslint is not recognized" / "prettier is not recognized"
+
 **Cause**: Dependencies not installed  
 **Fix**: Run `npm install`
 
 ### Tests pass but lint/format fail
+
 **Cause**: node_modules missing or incomplete  
 **Fix**: Delete `node_modules` and run `npm install`
 
 ### Git hooks not working
+
 **Cause**: Husky not initialized  
 **Fix**: Run `npm run prepare`
 
@@ -78,6 +84,7 @@ After setup, verify:
 ## Environment Setup
 
 1. Copy environment template:
+
    ```bash
    cp .env.example .env
    ```
@@ -87,11 +94,14 @@ After setup, verify:
 ## IDE Setup
 
 ### JetBrains (IntelliJ IDEA, WebStorm)
+
 - Code style is **automatically** applied from `.idea/codeStyles/`
 - No additional setup needed!
 
 ### VS Code
+
 Install extensions:
+
 - EditorConfig for VS Code
 - ESLint
 - Prettier - Code formatter

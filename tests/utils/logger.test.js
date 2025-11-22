@@ -63,4 +63,3 @@ describe('Logger Utility', () => {
     assert.ok(loggedMessage.includes('Test error'));
   });
 });
-

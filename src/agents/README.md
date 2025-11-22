@@ -10,6 +10,7 @@ This directory contains A2A (Agent-to-Agent) protocol implementations and agent 
 ## Creating an Agent
 
 Agents should follow the A2A protocol specification and implement:
+
 - Lifecycle management (init, shutdown)
 - Message handling
 - State management
@@ -51,4 +52,3 @@ export class ExampleAgent {
   }
 }
 ```
-

@@ -71,22 +71,26 @@ Welcome to the scarmServer documentation! This index will help you find the info
 ## 🗂️ Documentation by Purpose
 
 ### For New Developers
+
 1. [PROJECT_COMPLETE.md](PROJECT_COMPLETE.md) - Overview
 2. [PROJECT_SETUP.md](PROJECT_SETUP.md) - Setup
 3. [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Daily reference
 4. [CONTRIBUTING.md](CONTRIBUTING.md) - How to contribute
 
 ### For Code Style
+
 1. [CODE_STYLE_GUIDE.md](CODE_STYLE_GUIDE.md) - Detailed explanation
 2. [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Quick examples
 3. [CONTRIBUTING.md](CONTRIBUTING.md) - Standards enforcement
 
 ### For Testing
+
 1. [PROJECT_SETUP.md](PROJECT_SETUP.md) - Test setup
 2. [CONTRIBUTING.md](CONTRIBUTING.md) - Testing requirements
 3. Test files in `tests/` directory
 
 ### For Security
+
 1. [SECURITY.md](SECURITY.md) - Security policies
 2. [CONTRIBUTING.md](CONTRIBUTING.md) - Security practices
 
@@ -94,29 +98,29 @@ Welcome to the scarmServer documentation! This index will help you find the info
 
 ### By Topic
 
-| Topic | Documents |
-|-------|-----------|
-| **Installation** | PROJECT_SETUP.md, README.md |
-| **Code Style** | CODE_STYLE_GUIDE.md, QUICK_REFERENCE.md |
-| **Testing** | PROJECT_SETUP.md, CONTRIBUTING.md |
-| **Logging** | QUICK_REFERENCE.md, src/utils/logger.js |
-| **Validation** | QUICK_REFERENCE.md, src/utils/validation.js |
-| **Configuration** | PROJECT_SETUP.md, CODE_STYLE_GUIDE.md |
-| **Agents** | src/agents/README.md |
-| **LLM Clients** | src/clients/README.md |
-| **Security** | SECURITY.md |
-| **Contributing** | CONTRIBUTING.md |
-| **Changelog** | CHANGELOG.md |
+| Topic             | Documents                                   |
+| ----------------- | ------------------------------------------- |
+| **Installation**  | PROJECT_SETUP.md, README.md                 |
+| **Code Style**    | CODE_STYLE_GUIDE.md, QUICK_REFERENCE.md     |
+| **Testing**       | PROJECT_SETUP.md, CONTRIBUTING.md           |
+| **Logging**       | QUICK_REFERENCE.md, src/utils/logger.js     |
+| **Validation**    | QUICK_REFERENCE.md, src/utils/validation.js |
+| **Configuration** | PROJECT_SETUP.md, CODE_STYLE_GUIDE.md       |
+| **Agents**        | src/agents/README.md                        |
+| **LLM Clients**   | src/clients/README.md                       |
+| **Security**      | SECURITY.md                                 |
+| **Contributing**  | CONTRIBUTING.md                             |
+| **Changelog**     | CHANGELOG.md                                |
 
 ### By File Type
 
-| Type | Documents |
-|------|-----------|
-| **Guides** | PROJECT_SETUP.md, CODE_STYLE_GUIDE.md, CONTRIBUTING.md |
-| **References** | QUICK_REFERENCE.md, PROJECT_COMPLETE.md |
-| **Policies** | SECURITY.md, LICENSE |
-| **History** | CHANGELOG.md |
-| **Component** | src/agents/README.md, src/clients/README.md |
+| Type           | Documents                                              |
+| -------------- | ------------------------------------------------------ |
+| **Guides**     | PROJECT_SETUP.md, CODE_STYLE_GUIDE.md, CONTRIBUTING.md |
+| **References** | QUICK_REFERENCE.md, PROJECT_COMPLETE.md                |
+| **Policies**   | SECURITY.md, LICENSE                                   |
+| **History**    | CHANGELOG.md                                           |
+| **Component**  | src/agents/README.md, src/clients/README.md            |
 
 ## 📊 Documentation Statistics
 
@@ -156,6 +160,7 @@ Welcome to the scarmServer documentation! This index will help you find the info
 ## 📞 Getting Help
 
 If you can't find what you're looking for:
+
 1. Check this index
 2. Use your editor's search (Ctrl+Shift+F)
 3. Review the test files for examples
@@ -164,16 +169,19 @@ If you can't find what you're looking for:
 ## 🎓 Learning Path
 
 ### Beginner
+
 1. [README.md](README.md) - Overview
 2. [PROJECT_COMPLETE.md](PROJECT_COMPLETE.md) - What's included
 3. [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Daily usage
 
 ### Intermediate
+
 1. [PROJECT_SETUP.md](PROJECT_SETUP.md) - Deep dive
 2. [CODE_STYLE_GUIDE.md](CODE_STYLE_GUIDE.md) - Style details
 3. [CONTRIBUTING.md](CONTRIBUTING.md) - Best practices
 
 ### Advanced
+
 1. Source code in `src/`
 2. Test files in `tests/`
 3. Component READMEs
@@ -184,4 +192,3 @@ If you can't find what you're looking for:
 **Last Updated**: November 22, 2025  
 **Maintained by**: Parker Dunn (Scarmonit@gmail.com)  
 **Version**: 1.0.0
-
