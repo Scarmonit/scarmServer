@@ -19,13 +19,13 @@
 
 ### Deployment Pipeline Status
 
-| Component | Status | Notes |
-|-----------|--------|-------|
-| **CI Workflow** | ✅ Passing | All Node versions (18, 20, 22) passing |
-| **Pre-build Gates** | ✅ Configured | Format, lint, test, coverage, Trivy FS scan |
-| **Deploy Workflow** | ⏳ Triggered | Manual dispatch executed successfully |
-| **Build Job** | 🔄 In Progress | Workflow cache refreshed, Trivy scan removed |
-| **Image Scan** | ⚠️ Disabled | TODO: Reintroduce with verified action version |
+| Component           | Status         | Notes                                          |
+| ------------------- | -------------- | ---------------------------------------------- |
+| **CI Workflow**     | ✅ Passing     | All Node versions (18, 20, 22) passing         |
+| **Pre-build Gates** | ✅ Configured  | Format, lint, test, coverage, Trivy FS scan    |
+| **Deploy Workflow** | ⏳ Triggered   | Manual dispatch executed successfully          |
+| **Build Job**       | 🔄 In Progress | Workflow cache refreshed, Trivy scan removed   |
+| **Image Scan**      | ⚠️ Disabled    | TODO: Reintroduce with verified action version |
 
 ---
 
@@ -110,7 +110,7 @@
 1. **Visit**: https://github.com/Scarmonit/scarmServer/actions
 2. **Locate**: Workflow run triggered ~20:13-20:15 UTC
 3. **Verify**: Build-and-push job executes without Trivy action error
-4. **Confirm**: 
+4. **Confirm**:
    - Docker image builds successfully (amd64 + arm64)
    - Container health check passes
    - Image pushed to `ghcr.io/scarmonit/scarmserver`
@@ -118,6 +118,7 @@
 ### Post-Success
 
 1. ✅ Pull and test image locally:
+
    ```bash
    docker pull ghcr.io/scarmonit/scarmserver:latest
    docker run -p 3000:3000 ghcr.io/scarmonit/scarmserver:latest
@@ -160,16 +161,16 @@
 
 ## 📚 Documentation Index
 
-| Document | Purpose |
-|----------|---------|
-| `README.md` | Project overview, code style summary, quick start |
-| `CODE_STYLE_EXPORT.md` | Export for VSCode, other editors, downstream repos |
-| `code_explanation.md` | JetBrains IDE config deep dive |
-| `DEPLOY_DEBUG_STATUS.md` | Detailed debugging session log |
-| `DEPLOY_COMPLETE.md` | This completion summary |
-| `DEPLOYMENT.md` | Full deployment guide |
-| `.vscode/settings.json` | VSCode enforcement |
-| `style.config.json` | Machine-readable config |
+| Document                 | Purpose                                            |
+| ------------------------ | -------------------------------------------------- |
+| `README.md`              | Project overview, code style summary, quick start  |
+| `CODE_STYLE_EXPORT.md`   | Export for VSCode, other editors, downstream repos |
+| `code_explanation.md`    | JetBrains IDE config deep dive                     |
+| `DEPLOY_DEBUG_STATUS.md` | Detailed debugging session log                     |
+| `DEPLOY_COMPLETE.md`     | This completion summary                            |
+| `DEPLOYMENT.md`          | Full deployment guide                              |
+| `.vscode/settings.json`  | VSCode enforcement                                 |
+| `style.config.json`      | Machine-readable config                            |
 
 ---
 
@@ -204,4 +205,3 @@
 **Last Updated**: November 22, 2025 20:15 UTC  
 **Commits**: `13dbd3e`, `441dc4b` (+ unreleased debug status update)  
 **GitHub Actions**: https://github.com/Scarmonit/scarmServer/actions
-

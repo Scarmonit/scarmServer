@@ -58,16 +58,16 @@ Deploy workflow will automatically trigger on pushes that affect:
 
 ## 📊 Quality Metrics
 
-| Metric              | Status            |
-| ------------------- | ----------------- |
-| ESLint              | 0 errors ✅       |
-| Prettier            | All files formatted ✅ |
-| Tests               | 25/25 passing ✅  |
-| Coverage - Lines    | ≥80% ✅           |
-| Coverage - Statements | ≥80% ✅         |
-| Coverage - Functions | ≥70% ✅          |
-| Coverage - Branches | ≥60% ✅           |
-| CI Workflow         | Passing ✅        |
+| Metric                | Status                 |
+| --------------------- | ---------------------- |
+| ESLint                | 0 errors ✅            |
+| Prettier              | All files formatted ✅ |
+| Tests                 | 25/25 passing ✅       |
+| Coverage - Lines      | ≥80% ✅                |
+| Coverage - Statements | ≥80% ✅                |
+| Coverage - Functions  | ≥70% ✅                |
+| Coverage - Branches   | ≥60% ✅                |
+| CI Workflow           | Passing ✅             |
 
 ---
 
