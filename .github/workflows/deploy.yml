@@ -113,7 +113,7 @@ jobs:
           provenance: false
 
       - name: Scan image with Trivy (HIGH/CRITICAL)
-        uses: aquasecurity/trivy-action@v0.14.0
+        uses: aquasecurity/trivy-action@v0.13.0
         with:
           image-ref: ${{ steps.meta.outputs.tags }}
           severity: 'HIGH,CRITICAL'
