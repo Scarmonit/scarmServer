@@ -28,18 +28,25 @@ const initBridge = async () => {
           return;
         }
         try {
+          const mockMode = CONFIG.BRIDGE_MOCK === 'true';
           switch (type) {
             case 'llm.generate': {
-              const out = await service.generate(prompt, options || {});
+              const out = mockMode ? `MOCK:${prompt}` : await service.generate(prompt, options || {});
               socket.send(JSON.stringify({ id, data: out }));
               break;
             }
             case 'llm.stream': {
-              const stream = await service.generate(prompt, { ...(options || {}), stream: true });
-              for await (const token of stream) {
-                socket.send(JSON.stringify({ id, chunk: token }));
+              if (mockMode) {
+                const tokens = ['MO', 'CK', ':', prompt.slice(0, 5)];
+                for (const t of tokens) socket.send(JSON.stringify({ id, chunk: t }));
+                socket.send(JSON.stringify({ id, done: true }));
+              } else {
+                const stream = await service.generate(prompt, { ...(options || {}), stream: true });
+                for await (const token of stream) {
+                  socket.send(JSON.stringify({ id, chunk: token }));
+                }
+                socket.send(JSON.stringify({ id, done: true }));
               }
-              socket.send(JSON.stringify({ id, done: true }));
               break;
             }
             default:

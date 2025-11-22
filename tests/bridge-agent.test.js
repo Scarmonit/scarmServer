@@ -6,6 +6,8 @@ import { CONFIG } from '../src/config/constants.js';
 // Spawn the bridge in-process
 import '../src/agents/bridge.js';
 
+process.env.BRIDGE_MOCK = 'true';
+
 const BRIDGE_PORT = CONFIG.PORT + 1;
 const URL = `ws://localhost:${BRIDGE_PORT}`;
 
@@ -23,6 +25,7 @@ describe('BridgeAgent', () => {
     const msg = responses.find(r => r.id === '1');
     assert.ok(msg);
     assert.ok(typeof msg.data === 'string');
+    assert.ok(msg.data.startsWith('MOCK:'));
   });
 
   test('streams llm.stream tokens and done', async () => {
@@ -34,7 +37,8 @@ describe('BridgeAgent', () => {
     await delay(300);
     ws.close();
     const doneMsg = chunks.find(c => c.id === 's1' && c.done);
+    const chunkTokens = chunks.filter(c => c.chunk).map(c => c.chunk).join('');
     assert.ok(doneMsg, 'Should have received done message');
+    assert.ok(chunkTokens.startsWith('MOCK:')); // mock prefix
   });
 });
-

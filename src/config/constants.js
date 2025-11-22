@@ -28,6 +28,9 @@ export const CONFIG = {
   OLLAMA_MODEL: process.env.OLLAMA_MODEL || 'llama2',
   MODEL_MAX_TOKENS: parseInt(process.env.MODEL_MAX_TOKENS, 10) || 512,
   MODEL_TEMPERATURE: parseFloat(process.env.MODEL_TEMPERATURE) || 0.7,
+
+  // Bridge Configuration
+  BRIDGE_MOCK: process.env.BRIDGE_MOCK || 'false',
 };
 
 export const HTTP_STATUS = {
