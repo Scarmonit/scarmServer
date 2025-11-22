@@ -1,0 +1,33 @@
+﻿{
+  "indent": 2,
+  "lineLength": 100,
+  "quotes": "single",
+  "semicolons": true,
+  "trailingComma": "all",
+  "module": "es",
+  "lineEnding": "lf",
+  "braceSpacing": true,
+  "importBraceSpacing": true,
+  "wrapRules": {
+    "parameters": "wrapAlways",
+    "methodChains": "wrapAlways",
+    "arrays": "wrapAlways",
+    "ternary": "wrapAlways"
+  },
+  "eslint": {
+    "noConsole": "warn",
+    "noUnusedVars": "error",
+    "preferConst": true,
+    "arrowSpacing": true,
+    "commaDangle": "always-multiline"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": true,
+    "printWidth": 100,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "arrowParens": "always"
+  }
+}
+
